@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package observability.grpcburner.v1;
+
+option go_package = "github.com/shtsukada/cloudnative-observability-proto/gen/go/observability/grpcburner/v1;grpcburnerv1;
+
+service Burner {
+  rpc Ping (PingRequest) returns (PingReply);
+
+  rpc Burn (BurnRequest) returns (BurnReply);
+}
+
+message PingRequest {}
+message PingReply {
+  string message = 1;
+}
+
+message BurnRequest {
+  int32 duration_seconds = 1;
+  int32 cpu_threads = 2;
+  int32 memory_mb = 3;
+}
+
+message BurnReply {
+  string status = 1;
+}
