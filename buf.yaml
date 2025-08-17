@@ -1,0 +1,8 @@
+version: v1
+name: github.com/shtsukada/cloudnative-observability-proto
+lint:
+  use:
+    - DEFAULT
+breaking:
+  use:
+    - FILE
