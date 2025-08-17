@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             (unknown)
-// source: proto/observability/grpcburner/v1/burner.proto
+// source: observability/grpcburner/v1/burner.proto
 
 package grpcburnerv1
 
@@ -155,5 +155,5 @@ var Burner_ServiceDesc = grpc.ServiceDesc{
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "proto/observability/grpcburner/v1/burner.proto",
+	Metadata: "observability/grpcburner/v1/burner.proto",
 }

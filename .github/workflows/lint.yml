@@ -16,7 +16,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: "1.22.x"
+          go-version: "1.24.x"
 
       # buf セットアップ
       - name: Set up buf
@@ -33,6 +33,7 @@ jobs:
         uses: golangci/golangci-lint-action@v6
         with:
           version: latest
+          args: --timeout=5m --skip-dirs=gen
 
       # buf lint
       - name: Run buf lint

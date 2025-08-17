@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.7
 // 	protoc        (unknown)
-// source: proto/observability/grpcburner/v1/burner.proto
+// source: observability/grpcburner/v1/burner.proto
 
 package grpcburnerv1
 
@@ -29,7 +29,7 @@ type PingRequest struct {
 
 func (x *PingRequest) Reset() {
 	*x = PingRequest{}
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[0]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -41,7 +41,7 @@ func (x *PingRequest) String() string {
 func (*PingRequest) ProtoMessage() {}
 
 func (x *PingRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[0]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -54,7 +54,7 @@ func (x *PingRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingRequest.ProtoReflect.Descriptor instead.
 func (*PingRequest) Descriptor() ([]byte, []int) {
-	return file_proto_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{0}
+	return file_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{0}
 }
 
 type PingReply struct {
@@ -66,7 +66,7 @@ type PingReply struct {
 
 func (x *PingReply) Reset() {
 	*x = PingReply{}
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[1]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -78,7 +78,7 @@ func (x *PingReply) String() string {
 func (*PingReply) ProtoMessage() {}
 
 func (x *PingReply) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[1]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -91,7 +91,7 @@ func (x *PingReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use PingReply.ProtoReflect.Descriptor instead.
 func (*PingReply) Descriptor() ([]byte, []int) {
-	return file_proto_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{1}
+	return file_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *PingReply) GetMessage() string {
@@ -112,7 +112,7 @@ type BurnRequest struct {
 
 func (x *BurnRequest) Reset() {
 	*x = BurnRequest{}
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[2]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -124,7 +124,7 @@ func (x *BurnRequest) String() string {
 func (*BurnRequest) ProtoMessage() {}
 
 func (x *BurnRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[2]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -137,7 +137,7 @@ func (x *BurnRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BurnRequest.ProtoReflect.Descriptor instead.
 func (*BurnRequest) Descriptor() ([]byte, []int) {
-	return file_proto_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{2}
+	return file_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *BurnRequest) GetDurationSeconds() int32 {
@@ -170,7 +170,7 @@ type BurnReply struct {
 
 func (x *BurnReply) Reset() {
 	*x = BurnReply{}
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[3]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -182,7 +182,7 @@ func (x *BurnReply) String() string {
 func (*BurnReply) ProtoMessage() {}
 
 func (x *BurnReply) ProtoReflect() protoreflect.Message {
-	mi := &file_proto_observability_grpcburner_v1_burner_proto_msgTypes[3]
+	mi := &file_observability_grpcburner_v1_burner_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -195,7 +195,7 @@ func (x *BurnReply) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use BurnReply.ProtoReflect.Descriptor instead.
 func (*BurnReply) Descriptor() ([]byte, []int) {
-	return file_proto_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{3}
+	return file_observability_grpcburner_v1_burner_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *BurnReply) GetStatus() string {
@@ -205,11 +205,11 @@ func (x *BurnReply) GetStatus() string {
 	return ""
 }
 
-var File_proto_observability_grpcburner_v1_burner_proto protoreflect.FileDescriptor
+var File_observability_grpcburner_v1_burner_proto protoreflect.FileDescriptor
 
-const file_proto_observability_grpcburner_v1_burner_proto_rawDesc = "" +
+const file_observability_grpcburner_v1_burner_proto_rawDesc = "" +
 	"\n" +
-	".proto/observability/grpcburner/v1/burner.proto\x12\x1bobservability.grpcburner.v1\"\r\n" +
+	"(observability/grpcburner/v1/burner.proto\x12\x1bobservability.grpcburner.v1\"\r\n" +
 	"\vPingRequest\"%\n" +
 	"\tPingReply\x12\x18\n" +
 	"\amessage\x18\x01 \x01(\tR\amessage\"v\n" +
@@ -225,25 +225,25 @@ const file_proto_observability_grpcburner_v1_burner_proto_rawDesc = "" +
 	"\x04Burn\x12(.observability.grpcburner.v1.BurnRequest\x1a&.observability.grpcburner.v1.BurnReplyBfZdgithub.com/shtsukada/cloudnative-observability-proto/gen/go/observability/grpcburner/v1;grpcburnerv1b\x06proto3"
 
 var (
-	file_proto_observability_grpcburner_v1_burner_proto_rawDescOnce sync.Once
-	file_proto_observability_grpcburner_v1_burner_proto_rawDescData []byte
+	file_observability_grpcburner_v1_burner_proto_rawDescOnce sync.Once
+	file_observability_grpcburner_v1_burner_proto_rawDescData []byte
 )
 
-func file_proto_observability_grpcburner_v1_burner_proto_rawDescGZIP() []byte {
-	file_proto_observability_grpcburner_v1_burner_proto_rawDescOnce.Do(func() {
-		file_proto_observability_grpcburner_v1_burner_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_proto_observability_grpcburner_v1_burner_proto_rawDesc), len(file_proto_observability_grpcburner_v1_burner_proto_rawDesc)))
+func file_observability_grpcburner_v1_burner_proto_rawDescGZIP() []byte {
+	file_observability_grpcburner_v1_burner_proto_rawDescOnce.Do(func() {
+		file_observability_grpcburner_v1_burner_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_observability_grpcburner_v1_burner_proto_rawDesc), len(file_observability_grpcburner_v1_burner_proto_rawDesc)))
 	})
-	return file_proto_observability_grpcburner_v1_burner_proto_rawDescData
+	return file_observability_grpcburner_v1_burner_proto_rawDescData
 }
 
-var file_proto_observability_grpcburner_v1_burner_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
-var file_proto_observability_grpcburner_v1_burner_proto_goTypes = []any{
+var file_observability_grpcburner_v1_burner_proto_msgTypes = make([]protoimpl.MessageInfo, 4)
+var file_observability_grpcburner_v1_burner_proto_goTypes = []any{
 	(*PingRequest)(nil), // 0: observability.grpcburner.v1.PingRequest
 	(*PingReply)(nil),   // 1: observability.grpcburner.v1.PingReply
 	(*BurnRequest)(nil), // 2: observability.grpcburner.v1.BurnRequest
 	(*BurnReply)(nil),   // 3: observability.grpcburner.v1.BurnReply
 }
-var file_proto_observability_grpcburner_v1_burner_proto_depIdxs = []int32{
+var file_observability_grpcburner_v1_burner_proto_depIdxs = []int32{
 	0, // 0: observability.grpcburner.v1.Burner.Ping:input_type -> observability.grpcburner.v1.PingRequest
 	2, // 1: observability.grpcburner.v1.Burner.Burn:input_type -> observability.grpcburner.v1.BurnRequest
 	1, // 2: observability.grpcburner.v1.Burner.Ping:output_type -> observability.grpcburner.v1.PingReply
@@ -255,26 +255,26 @@ var file_proto_observability_grpcburner_v1_burner_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_proto_observability_grpcburner_v1_burner_proto_init() }
-func file_proto_observability_grpcburner_v1_burner_proto_init() {
-	if File_proto_observability_grpcburner_v1_burner_proto != nil {
+func init() { file_observability_grpcburner_v1_burner_proto_init() }
+func file_observability_grpcburner_v1_burner_proto_init() {
+	if File_observability_grpcburner_v1_burner_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_proto_observability_grpcburner_v1_burner_proto_rawDesc), len(file_proto_observability_grpcburner_v1_burner_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_observability_grpcburner_v1_burner_proto_rawDesc), len(file_observability_grpcburner_v1_burner_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   4,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_proto_observability_grpcburner_v1_burner_proto_goTypes,
-		DependencyIndexes: file_proto_observability_grpcburner_v1_burner_proto_depIdxs,
-		MessageInfos:      file_proto_observability_grpcburner_v1_burner_proto_msgTypes,
+		GoTypes:           file_observability_grpcburner_v1_burner_proto_goTypes,
+		DependencyIndexes: file_observability_grpcburner_v1_burner_proto_depIdxs,
+		MessageInfos:      file_observability_grpcburner_v1_burner_proto_msgTypes,
 	}.Build()
-	File_proto_observability_grpcburner_v1_burner_proto = out.File
-	file_proto_observability_grpcburner_v1_burner_proto_goTypes = nil
-	file_proto_observability_grpcburner_v1_burner_proto_depIdxs = nil
+	File_observability_grpcburner_v1_burner_proto = out.File
+	file_observability_grpcburner_v1_burner_proto_goTypes = nil
+	file_observability_grpcburner_v1_burner_proto_depIdxs = nil
 }

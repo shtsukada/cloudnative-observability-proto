@@ -1,0 +1,13 @@
+# .golangci.yml（最小）
+run:
+  timeout: 5m
+  skip-dirs:
+    - gen
+
+linters:
+  disable-all: true
+  enable:
+    - govet
+    - staticcheck
+    - gofmt
+    - goimports
