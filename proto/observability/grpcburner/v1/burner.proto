@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package observability.grpcburner.v1;
 
-option go_package = "github.com/shtsukada/cloudnative-observability-proto/gen/go/observability/grpcburner/v1;grpcburnerv1;
+option go_package = "github.com/shtsukada/cloudnative-observability-proto/gen/go/observability/grpcburner/v1;grpcburnerv1";
 
 service Burner {
   rpc Ping (PingRequest) returns (PingReply);
