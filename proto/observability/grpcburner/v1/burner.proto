@@ -4,23 +4,112 @@ package observability.grpcburner.v1;
 
 option go_package = "github.com/shtsukada/cloudnative-observability-proto/gen/go/observability/grpcburner/v1;grpcburnerv1";
 
-service Burner {
-  rpc Ping (PingRequest) returns (PingReply);
-
-  rpc Burn (BurnRequest) returns (BurnReply);
-}
+// --- Ping ---
 
 message PingRequest {}
+
 message PingReply {
   string message = 1;
 }
 
-message BurnRequest {
-  int32 duration_seconds = 1;
-  int32 cpu_threads = 2;
-  int32 memory_mb = 3;
+// --- Load config ---
+
+// LoadMode は負荷生成モードを表す。
+enum LoadMode {
+  LOAD_MODE_UNSPECIFIED = 0;
+  LOAD_MODE_CPU         = 1; // CPU負荷
+  LOAD_MODE_MEM         = 2; // メモリ負荷
+  LOAD_MODE_CPU_MEM     = 3; // CPU+メモリ複合
+  LOAD_MODE_IO          = 4; // I/O負荷
 }
 
-message BurnReply {
-  string status = 1;
+// WorkConfig は 1 回の負荷ジョブのパラメータ。
+// サーバ実装側では任意の内部表現（例: load.Config）にマッピングして利用することを想定する。
+message WorkConfig {
+  // モード (CPU/MEM/CPU+MEM/IO)
+  LoadMode mode = 1;
+
+  // ジョブ全体の継続時間 [ms]
+  int64 duration_ms = 2;
+
+  // 確保するメモリ量 [MB]
+  int32 alloc_mb = 3;
+
+  // CPU ワーカー goroutine 数
+  int32 parallelism = 4;
+
+  // IO 負荷: 1ループあたりに読み書きするバイト数
+  int32 io_bytes = 5;
+
+  // 固定遅延 [ms] (全モード共通)
+  int64 latency_ms = 6;
+
+  // 確率的エラー発生率 [0.0, 1.0]
+  double error_rate = 7;
+}
+
+// DoWorkRequest は 1 回の負荷ジョブを表す。
+message DoWorkRequest {
+  // クライアント側で生成する request_id (UUID 等を想定)
+  string request_id = 1;
+
+  // 実行する負荷の設定
+  WorkConfig config = 2;
+}
+
+// DoWorkResponse は 1 ジョブの結果を表す。
+message DoWorkResponse {
+  // 対応する request_id
+  string request_id = 1;
+
+  // 負荷実行が「成功とみなせるか」のフラグ
+  bool ok = 2;
+
+  // エラー時のメッセージ (あれば)
+  string error_message = 3;
+}
+
+// DoWorkServerStreamingRequest は、同じ config を繰り返し実行し、
+// 各実行結果をストリームで受け取るためのリクエスト。
+message DoWorkServerStreamingRequest {
+  string     request_id = 1;
+  WorkConfig config     = 2;
+
+  // 同じ config で何回 Run するか (1以上)
+  int32 repeat = 3;
+}
+
+// DoWorkSummary は client streaming / bidi streaming などで
+// サーバ側が集計した結果を返すためのメッセージ。
+message DoWorkSummary {
+  string request_id = 1; // クライアント側がまとめ用に使いたければ使用、空でもよい
+  int32  total      = 2;
+  int32  success    = 3;
+  int32  failed     = 4;
+}
+
+// --- Service ---
+
+service Burner {
+  // Health 的な軽量 RPC
+  rpc Ping(PingRequest) returns (PingReply);
+
+  // Unary 型の負荷実行 RPC
+  rpc DoWork(DoWorkRequest) returns (DoWorkResponse);
+
+  // Server Streaming:
+  // 1 リクエストで repeat 回の Run を実行し、その結果を逐次返す
+  rpc DoWorkServerStreaming(DoWorkServerStreamingRequest)
+      returns (stream DoWorkResponse);
+
+  // Client Streaming:
+  // 複数の DoWorkRequest を送信し、最後に集計結果を受け取る
+  rpc DoWorkClientStreaming(stream DoWorkRequest)
+      returns (DoWorkSummary);
+
+  // BiDi Streaming:
+  // クライアントが DoWorkRequest をストリームで送り、
+  // サーバが各ジョブの結果をストリームで返す
+  rpc DoWorkBidiStreaming(stream DoWorkRequest)
+      returns (stream DoWorkResponse);
 }
