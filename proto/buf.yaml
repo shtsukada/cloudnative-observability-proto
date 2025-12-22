@@ -1,8 +1,6 @@
 version: v1
 name: github.com/shtsukada/cloudnative-observability-proto
 lint:
-  use:
-    - STANDARD
   except:
     - SERVICE_SUFFIX
     - RPC_REQUEST_STANDARD_NAME
