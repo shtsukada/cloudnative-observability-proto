@@ -35,7 +35,7 @@ jobs:
         uses: golangci/golangci-lint-action@v7
         with:
           version: v2.7.1
-          args: --timeout=5m --skip-dirs=gen
+          args: --timeout=5m
 
       # buf lint
       - name: Run buf lint
