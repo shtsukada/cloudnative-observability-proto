@@ -36,6 +36,7 @@ jobs:
         with:
           version: v2.7.1
           args: --timeout=5m
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # buf lint
       - name: Run buf lint
