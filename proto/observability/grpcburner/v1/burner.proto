@@ -17,10 +17,10 @@ message PingReply {
 // LoadMode は負荷生成モードを表す。
 enum LoadMode {
   LOAD_MODE_UNSPECIFIED = 0;
-  LOAD_MODE_CPU         = 1; // CPU負荷
-  LOAD_MODE_MEM         = 2; // メモリ負荷
-  LOAD_MODE_CPU_MEM     = 3; // CPU+メモリ複合
-  LOAD_MODE_IO          = 4; // I/O負荷
+  LOAD_MODE_CPU = 1; // CPU負荷
+  LOAD_MODE_MEM = 2; // メモリ負荷
+  LOAD_MODE_CPU_MEM = 3; // CPU+メモリ複合
+  LOAD_MODE_IO = 4; // I/O負荷
 }
 
 // WorkConfig は 1 回の負荷ジョブのパラメータ。
@@ -72,8 +72,8 @@ message DoWorkResponse {
 // DoWorkServerStreamingRequest は、同じ config を繰り返し実行し、
 // 各実行結果をストリームで受け取るためのリクエスト。
 message DoWorkServerStreamingRequest {
-  string     request_id = 1;
-  WorkConfig config     = 2;
+  string request_id = 1;
+  WorkConfig config = 2;
 
   // 同じ config で何回 Run するか (1以上)
   int32 repeat = 3;
@@ -83,9 +83,9 @@ message DoWorkServerStreamingRequest {
 // サーバ側が集計した結果を返すためのメッセージ。
 message DoWorkSummary {
   string request_id = 1; // クライアント側がまとめ用に使いたければ使用、空でもよい
-  int32  total      = 2;
-  int32  success    = 3;
-  int32  failed     = 4;
+  int32 total = 2;
+  int32 success = 3;
+  int32 failed = 4;
 }
 
 // --- Service ---
@@ -99,17 +99,14 @@ service Burner {
 
   // Server Streaming:
   // 1 リクエストで repeat 回の Run を実行し、その結果を逐次返す
-  rpc DoWorkServerStreaming(DoWorkServerStreamingRequest)
-      returns (stream DoWorkResponse);
+  rpc DoWorkServerStreaming(DoWorkServerStreamingRequest) returns (stream DoWorkResponse);
 
   // Client Streaming:
   // 複数の DoWorkRequest を送信し、最後に集計結果を受け取る
-  rpc DoWorkClientStreaming(stream DoWorkRequest)
-      returns (DoWorkSummary);
+  rpc DoWorkClientStreaming(stream DoWorkRequest) returns (DoWorkSummary);
 
   // BiDi Streaming:
   // クライアントが DoWorkRequest をストリームで送り、
   // サーバが各ジョブの結果をストリームで返す
-  rpc DoWorkBidiStreaming(stream DoWorkRequest)
-      returns (stream DoWorkResponse);
+  rpc DoWorkBidiStreaming(stream DoWorkRequest) returns (stream DoWorkResponse);
 }
